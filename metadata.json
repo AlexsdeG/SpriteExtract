@@ -1,0 +1,7 @@
+{
+  "name": "SpriteExtract",
+  "description": "A professional browser-based spritesheet cutter tool. Features manual slicing, grid extraction, and auto-detection using computer vision.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
