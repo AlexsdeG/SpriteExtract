@@ -9,16 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "clsx": "2.1.0",
+    "file-saver": "2.0.5",
+    "jszip": "3.10.1",
+    "konva": "^10.0.12",
+    "lucide-react": "0.363.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sonner": "1.4.3",
-    "clsx": "2.1.0",
-    "tailwind-merge": "2.2.2",
-    "lucide-react": "0.363.0",
-    "zustand": "^5.0.9",
     "react-konva": "18.2.10",
-    "jszip": "3.10.1",
-    "file-saver": "2.0.5"
+    "sonner": "1.4.3",
+    "tailwind-merge": "2.2.2",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

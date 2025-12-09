@@ -2,6 +2,9 @@
 
 A professional, browser-based tool for slicing and extracting sprites from texture atlases and spritesheets. Built with React, Konva, and OpenCV.
 
+
+![App Screenshot](https://github.com/AlexsdeG/SpriteExtract/blob/main/SpriteExtract.png)
+
 ## 🚀 Features
 
 ### ✂️ Extraction Modes
