@@ -85,7 +85,7 @@ const defaultManualSettings: ManualSettings = {
   aspectRatioX: 1,
   aspectRatioY: 1,
   preventOverlap: false,
-  allowPartial: false,
+  allowPartial: true,
   lockSprites: false
 };
 

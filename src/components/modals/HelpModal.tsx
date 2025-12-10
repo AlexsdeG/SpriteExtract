@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '../ui/Modal';
-import { Keyboard, MousePointer2, Grid3X3, Wand2 } from 'lucide-react';
+import { Keyboard, MousePointer2, Grid3X3, Wand2, Star } from 'lucide-react';
 
 interface HelpModalProps {
   isOpen: boolean;
@@ -10,7 +10,7 @@ interface HelpModalProps {
 const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Help & Shortcuts" className="max-w-2xl">
-      <div className="space-y-6">
+      <div className="space-y-6 max-h-[70vh] overflow-y-auto pr-2">
         
         {/* Keyboard Shortcuts */}
         <section className="space-y-3">
@@ -85,6 +85,56 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
                 </div>
              </div>
           </div>
+        </section>
+
+        {/* AI Auto-Naming Explained */}
+        <section className="space-y-3">
+           <h3 className="flex items-center gap-2 text-sm font-medium text-foreground border-b border-border pb-1">
+             <Wand2 className="w-4 h-4" /> AI Auto-Naming
+           </h3>
+           <div className="space-y-4 text-sm text-muted-foreground">
+              <p>
+                The AI Auto-Name feature uses computer vision to analyze your sprites and generate descriptive names.
+              </p>
+              
+              <div className="grid gap-3">
+                 {/* Card 1: Smart Prompting */}
+                 <div className="bg-muted/30 p-3 rounded border border-border/50">
+                    <h4 className="text-xs font-semibold text-foreground mb-1">1. Smart Prompting</h4>
+                    <p className="text-xs mb-2">
+                      Guide the AI's style by describing your sprites in the <b>Naming Prompt</b>.
+                    </p>
+                    <div className="text-[10px] bg-background/50 p-2 rounded border border-border/30 font-mono text-muted-foreground">
+                       "Fantasy RPG weapons, use snake_case, e.g. iron_sword"
+                    </div>
+                 </div>
+
+                 {/* Card 2: Visual References */}
+                 <div className="bg-muted/30 p-3 rounded border border-border/50">
+                    <h4 className="text-xs font-semibold text-foreground mb-1">2. Visual References</h4>
+                    <p className="text-xs mb-2">
+                      Teach the AI by example. Select specific sprites to serve as <b>Anchors</b>.
+                    </p>
+                    <ul className="list-disc list-inside text-xs space-y-1 ml-1">
+                       <li><b>Add Ref:</b> Pick a sprite and give it a name (e.g. "Fire Helm").</li>
+                       <li><b>Style Guide:</b> The AI will use these examples to name similar looking items consistently.</li>
+                    </ul>
+                 </div>
+
+                 {/* Card 3: Advanced Grouping */}
+                 <div className="bg-muted/30 p-3 rounded border border-border/50">
+                    <h4 className="text-xs font-semibold text-foreground mb-1">3. Advanced Grouping & Context</h4>
+                    <p className="text-xs mb-2">
+                      For complex sheets, use structured naming rules.
+                    </p>
+                    <ul className="list-disc list-inside text-xs space-y-1 ml-1">
+                       <li><b>Categories:</b> Define groups like "Type" or "Element".</li>
+                       <li><b>Assignments:</b> Click sprites to tag them with values (e.g. "Fire") or use the <Star className="w-3 h-3 inline align-text-top" /> for generic group membership.</li>
+                       <li><b>Pattern:</b> Enforce a structure like <code>&#123;Type&#125;_&#123;Element&#125;_&#123;Name&#125;</code>.</li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
         </section>
 
       </div>

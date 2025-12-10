@@ -195,7 +195,7 @@ const AutoNameModal: React.FC<AutoNameModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="AI Auto-Name Sprites">
-      <div className="space-y-6 max-h-[80vh] overflow-y-auto pr-2">
+      <div className="space-y-6">
         {/* Prompt Section */}
         <div className="space-y-2">
           <label className="text-sm text-muted-foreground block">
