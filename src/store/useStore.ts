@@ -1,7 +1,8 @@
 
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { Dimensions, Coordinates, SelectionMode, GridSettings, AutoSettings, ManualSettings, SpriteRect, UserPreferences, UIState } from '../types';
+import { secureStorage } from '../lib/storage';
 
 interface AppState {
   // Image State (Not persisted)
@@ -90,12 +91,14 @@ const defaultManualSettings: ManualSettings = {
 
 const defaultPreferences: UserPreferences = {
   showSidebarThumbnails: true,
-  defaultNamingPrefix: 'sprite'
+  defaultNamingPrefix: 'sprite',
+  geminiApiKey: ''
 };
 
 const defaultUI: UIState = {
   isSettingsOpen: false,
-  isHelpOpen: false
+  isHelpOpen: false,
+  isAutoNameOpen: false
 };
 
 export const useStore = create<AppState>()(
@@ -211,6 +214,7 @@ export const useStore = create<AppState>()(
         manualSettings: state.manualSettings,
         preferences: state.preferences,
       }),
+      storage: createJSONStorage(() => secureStorage),
     }
   )
 );

@@ -29,6 +29,12 @@ A professional, browser-based tool for slicing and extracting sprites from textu
 *   **Bulk Export**: Download all extracted sprites as a structured ZIP file.
 *   **Individual Export**: Download single sprites as PNGs immediately.
 *   **Smart Naming**: Auto-incrementing naming system with custom prefixes.
+*   **AI Auto-Naming**: Automatically name extracted sprites using Google Gemini AI (requires API key).
+
+### 🤖 AI Features (Optional)
+*   **Auto-Naming**: Automatically name extracted sprites using Google Gemini AI.
+*   **Custom Prompts**: Guide the AI with specific naming conventions (e.g., "RPG items", "snake_case").
+*   **Setup**: Requires a `GEMINI_API_KEY` in your `.env` file.
 
 ## 🛠️ Tech Stack
 
@@ -58,7 +64,13 @@ A professional, browser-based tool for slicing and extracting sprites from textu
     pnpm install
     ```
 
-3.  **Run the development server**
+3.  **Configure Environment (Optional)**
+    Create a `.env` file in the root directory and add your Gemini API key to enable AI features:
+    ```env
+    GEMINI_API_KEY=your_api_key_here
+    ```
+
+4.  **Run the development server**
     ```bash
     pnpm dev
     ```

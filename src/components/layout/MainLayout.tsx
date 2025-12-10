@@ -9,6 +9,7 @@ import { useKeyboard } from '../../hooks/useKeyboard';
 import { useStore } from '../../store/useStore';
 import SettingsModal from '../modals/SettingsModal';
 import HelpModal from '../modals/HelpModal';
+import AutoNameModal from '../modals/AutoNameModal';
 
 const MainLayout: React.FC = () => {
   // Initialize global keyboard shortcuts
@@ -46,6 +47,7 @@ const MainLayout: React.FC = () => {
       {/* Modals rendered here to overlay everything */}
       <SettingsModal isOpen={ui.isSettingsOpen} onClose={() => setUI({ isSettingsOpen: false })} />
       <HelpModal isOpen={ui.isHelpOpen} onClose={() => setUI({ isHelpOpen: false })} />
+      <AutoNameModal isOpen={ui.isAutoNameOpen} onClose={() => setUI({ isAutoNameOpen: false })} />
     </div>
   );
 };

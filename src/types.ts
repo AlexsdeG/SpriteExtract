@@ -59,9 +59,11 @@ export interface AutoSettings {
 export interface UserPreferences {
   showSidebarThumbnails: boolean;
   defaultNamingPrefix: string;
+  geminiApiKey?: string;
 }
 
 export interface UIState {
   isSettingsOpen: boolean;
   isHelpOpen: boolean;
+  isAutoNameOpen: boolean;
 }

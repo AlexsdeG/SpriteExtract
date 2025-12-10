@@ -45,7 +45,7 @@ export const exportAllSprites = async (
 };
 
 // Helper to extract blob from image
-const getSpriteBlob = (imageSource: string, rect: SpriteRect): Promise<Blob | null> => {
+export const getSpriteBlob = (imageSource: string, rect: SpriteRect): Promise<Blob | null> => {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = "Anonymous";

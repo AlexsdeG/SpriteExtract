@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Layers, Download, Loader2 } from 'lucide-react';
+import { Layers, Download, Loader2, Wand2 } from 'lucide-react';
 import { useStore } from '../../store/useStore';
+import { isAiAvailable } from '../../lib/ai';
 import { exportAllSprites, exportSprite } from '../../lib/exportUtils';
 import { toast } from 'sonner';
 import SidebarItem from './SidebarItem';
@@ -13,7 +14,7 @@ const Sidebar: React.FC = () => {
   const toggleSelectRect = useStore((state) => state.toggleSelectRect);
   const clearRects = useStore((state) => state.clearRects);
   const updateRect = useStore((state) => state.updateRect);
-  const { setTransform, scale, imageUrl, fileName, imageDimensions, preferences } = useStore();
+  const { setTransform, scale, imageUrl, fileName, imageDimensions, preferences, setUI } = useStore();
   const [isExporting, setIsExporting] = useState(false);
 
   const handleFocus = (rect: SpriteRect) => {
@@ -70,14 +71,26 @@ const Sidebar: React.FC = () => {
           Sprites ({rects.length})
         </h2>
         {rects.length > 0 && (
-          <button 
-            onClick={() => {
-              if (window.confirm('Clear all sprites?')) clearRects();
-            }}
-            className="text-xs text-red-400 hover:text-red-300 transition-colors"
-          >
-            Clear All
-          </button>
+          <div className="flex items-center gap-3">
+            {(isAiAvailable || !!preferences.geminiApiKey) && (
+              <button
+                onClick={() => setUI({ isAutoNameOpen: true })}
+                className="text-xs flex items-center gap-1 text-primary hover:text-primary/80 transition-colors"
+                title="Auto Name Sprites"
+              >
+                <Wand2 className="w-3 h-3" />
+                Auto Name
+              </button>
+            )}
+            <button 
+              onClick={() => {
+                if (window.confirm('Clear all sprites?')) clearRects();
+              }}
+              className="text-xs text-red-400 hover:text-red-300 transition-colors"
+            >
+              Clear All
+            </button>
+          </div>
         )}
       </div>
 
