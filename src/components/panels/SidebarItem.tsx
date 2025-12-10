@@ -40,6 +40,10 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     }
   }, [isEditing]);
 
+  useEffect(() => {
+    setEditName(rect.name);
+  }, [rect.name]);
+
   const handleSaveName = () => {
     if (editName.trim() !== '' && editName !== rect.name) {
       onRename(rect.id, editName.trim());
