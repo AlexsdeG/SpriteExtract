@@ -1,11 +1,13 @@
 # SpriteExtract
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Click_Here-blue?style=for-the-badge)](https://spriteextract.pro-grammer.de/)
+
 A professional, browser-based tool for slicing and extracting sprites from texture atlases and spritesheets. Built with React, Konva, and OpenCV.
 
 
 ![App Screenshot](https://github.com/AlexsdeG/SpriteExtract/blob/main/SpriteExtract.png)
 
-## 🚀 Features
+## 🚀 Features **([Demo](https://spriteextract.pro-grammer.de/))**
 
 ### ✂️ Extraction Modes
 *   **Manual Mode**: Click and drag to define sprites. Includes aspect ratio locking, overlap prevention, and sprite locking.
