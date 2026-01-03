@@ -1,25 +1,25 @@
 
 import React, { useRef, useState } from 'react';
-import { Upload, Scissors, Grid3X3, Wand2, ZoomIn, ZoomOut, Download, Loader2, MousePointer2, Settings, HelpCircle } from 'lucide-react';
+import { Upload, Scissors, Grid3X3, Wand2, ZoomIn, ZoomOut, Download, Loader2, MousePointer2, Settings, HelpCircle, Github } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { useStore } from '../../store/useStore';
 import { toast } from 'sonner';
 import { exportAllSprites } from '../../lib/exportUtils';
 
 const Toolbar: React.FC = () => {
-  const { 
-    mode, 
-    setMode, 
-    scale, 
-    setTransform, 
-    position, 
-    setImage, 
+  const {
+    mode,
+    setMode,
+    scale,
+    setTransform,
+    position,
+    setImage,
     imageUrl,
     fileName,
     rects,
     setUI
   } = useStore();
-  
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isExporting, setIsExporting] = useState(false);
 
@@ -52,10 +52,10 @@ const Toolbar: React.FC = () => {
 
   const handleQuickExport = async () => {
     if (!imageUrl || rects.length === 0) {
-        toast.error("Nothing to export");
-        return;
+      toast.error("Nothing to export");
+      return;
     }
-    
+
     setIsExporting(true);
     const toastId = toast.loading("Exporting sprites...");
     try {
@@ -82,18 +82,18 @@ const Toolbar: React.FC = () => {
 
           {/* File Actions */}
           <div className="flex items-center gap-2">
-            <button 
+            <button
               onClick={() => fileInputRef.current?.click()}
               className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-secondary hover:bg-secondary/80 text-secondary-foreground rounded-md transition-colors"
             >
               <Upload className="w-4 h-4" />
               <span className="hidden sm:inline">Open</span>
             </button>
-            <input 
+            <input
               ref={fileInputRef}
-              type="file" 
-              accept="image/*" 
-              className="hidden" 
+              type="file"
+              accept="image/*"
+              className="hidden"
               onChange={handleFileChange}
             />
           </div>
@@ -140,51 +140,64 @@ const Toolbar: React.FC = () => {
 
         {/* Right Side Controls */}
         <div className="flex items-center gap-4 shrink-0">
-          
+
           <div className="flex items-center gap-2">
-             <button
+            <button
               onClick={() => setUI({ isHelpOpen: true })}
               className="p-2 hover:bg-accent rounded-md text-muted-foreground hover:text-foreground transition-colors"
               title="Help & Shortcuts"
-             >
-                <HelpCircle className="w-5 h-5" />
-             </button>
-             <button
+            >
+              <HelpCircle className="w-5 h-5" />
+            </button>
+            <button
               onClick={() => setUI({ isSettingsOpen: true })}
               className="p-2 hover:bg-accent rounded-md text-muted-foreground hover:text-foreground transition-colors"
               title="Settings"
-             >
-                <Settings className="w-5 h-5" />
-             </button>
+            >
+              <Settings className="w-5 h-5" />
+            </button>
           </div>
 
           <div className="h-6 w-px bg-border" />
 
           <div className="flex items-center gap-1 bg-muted rounded-md p-1">
-              <button 
-                onClick={() => handleZoom('out')}
-                className="p-1.5 hover:bg-background rounded-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                  <ZoomOut className="w-4 h-4" />
-              </button>
-              <span className="text-xs w-10 text-center font-mono select-none">
-                {Math.round(scale * 100)}%
-              </span>
-              <button 
-                onClick={() => handleZoom('in')}
-                className="p-1.5 hover:bg-background rounded-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                  <ZoomIn className="w-4 h-4" />
-              </button>
+            <button
+              onClick={() => handleZoom('out')}
+              className="p-1.5 hover:bg-background rounded-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ZoomOut className="w-4 h-4" />
+            </button>
+            <span className="text-xs w-10 text-center font-mono select-none">
+              {Math.round(scale * 100)}%
+            </span>
+            <button
+              onClick={() => handleZoom('in')}
+              className="p-1.5 hover:bg-background rounded-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <ZoomIn className="w-4 h-4" />
+            </button>
           </div>
-          <button 
+          <button
             onClick={handleQuickExport}
             disabled={rects.length === 0 || isExporting}
-            className="p-2 hover:bg-accent rounded-md text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50" 
+            className="p-2 hover:bg-accent rounded-md text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50"
             title="Download All"
           >
-              {isExporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Download className="w-5 h-5" />}
+            {isExporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Download className="w-5 h-5" />}
           </button>
+
+          <div className="h-6 w-px bg-border" />
+
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/AlexsdeG/SpriteExtract"
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 hover:bg-white/10 rounded-full transition-colors focus:outline-none focus:bg-white/10"
+            >
+              <Github size={20} />
+            </a>
+          </div>
         </div>
       </div>
     </>
